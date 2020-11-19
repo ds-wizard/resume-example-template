@@ -1,0 +1,89 @@
+{
+    "templateId": "resume-example-template",
+    "organizationId": "dsw",
+    "version": "0.1.0",
+    "name": "Resume example template",
+    "description": "My description of my resume template",
+    "license": "CC0",
+    "metamodelVersion": 2,
+    "recommendedPackageId": "dsw:resume:1.0.0",
+    "allowedPackages": [
+        {
+            "orgId": "dsw",
+            "kmId": "resume",
+            "minVersion": "1.0.0",
+            "maxVersion": null
+        }
+    ],
+    "formats": [
+        {
+            "uuid": "16558eaf-fc75-4f62-bf0e-a9e019235435",
+            "name": "HTML",
+            "shortName": "html",
+            "icon": "far fa-file-code",
+            "color": "#f15722",
+            "steps": [
+                {
+                    "name": "jinja",
+                    "options": {
+                        "template": "src/template.html.j2",
+                        "content-type": "text/html",
+                        "extension": "html"
+                    }
+                }
+            ]
+        },
+        {
+            "uuid": "4141af57-4505-4e0c-a1c9-f3364f91d092",
+            "name": "PDF",
+            "shortName": "pdf",
+            "icon": "far fa-file-pdf",
+            "color": "#f15722",
+            "steps": [
+                {
+                    "name": "jinja",
+                    "options": {
+                        "template": "src/template.html.j2",
+                        "content-type": "text/html",
+                        "extension": "html"
+                    }
+                },
+                {
+                    "name": "wkhtmltopdf",
+                    "options": {}
+                }
+            ]
+        },
+        {
+            "uuid": "4b57f182-2251-4d54-88f9-7168bdbe1b51",
+            "name": "MS Word",
+            "shortName": "docx",
+            "icon": "far fa-file-word",
+            "color": "#f15722",
+            "steps": [
+                {
+                    "name": "jinja",
+                    "options": {
+                        "template": "src/template.html.j2",
+                        "content-type": "text/html",
+                        "extension": "html"
+                    }
+                },
+                {
+                    "name": "pandoc",
+                    "options": {
+                        "from": "html",
+                        "to": "docx"
+                    }
+                }
+            ]
+        }
+    ],
+    "_tdk": {
+        "version": "2.8.1",
+        "readmeFile": "README.md",
+        "files": [
+            "src/template.html.j2"
+        ]
+    }
+}
