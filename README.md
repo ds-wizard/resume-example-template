@@ -15,6 +15,10 @@
 
 ## Changelog
 
+### 0.2.0
+
+- Updated to metamodel v7 (DSW 3.7.0)
+
 ### 0.1.0
 
 - Initial version of Resume example template template

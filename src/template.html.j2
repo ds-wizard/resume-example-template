@@ -2,12 +2,15 @@
 {%- set km = ctx.knowledgeModel -%}
 {%- set repliesMap = ctx.questionnaireReplies -%}
 {%- set chapterBasicUUID = "092596cd-b3ff-42a5-90dc-1698ebe7e74e" -%}
+{%- set chapterSkillsUUID = "089ea857-16ac-44df-b4e6-f0e4065f25d9" -%}
+{#- NAME -#}
 {%- set qFirstnameUUID = "90a46761-1d22-4f74-b3c7-aab3fba3efb8" -%}
 {%- set qLastnameUUID = "9936cc0a-b62b-48fd-b9be-c3a768545d96" -%}
 {%- set qFirstnamePath = [chapterBasicUUID, qFirstnameUUID]|reply_path -%}
 {%- set qLastnamePath = [chapterBasicUUID, qLastnameUUID]|reply_path -%}
 {%- set firstname = repliesMap[qFirstnamePath]|reply_str_value -%}
 {%- set lastname = repliesMap[qLastnamePath]|reply_str_value -%}
+{#- GENDER -#}
 {%- set qGenderUUID = "1e5eb700-6233-4dd1-9862-9646aeefd479" -%}
 {%- set qGenderPath = [chapterBasicUUID, qGenderUUID]|reply_path -%}
 {%- set gender = repliesMap[qGenderPath]|reply_str_value -%}
@@ -17,13 +20,12 @@
 {%- set qGenderOtherUUID = "7dfad87e-86ea-41e0-84d6-d912c9f722ae" -%}
 {%- set qGenderOtherPath = [qGenderPath, aGenderOtherUUID, qGenderOtherUUID]|reply_path -%}
 {%- set genderOther = repliesMap[qGenderOtherPath]|reply_str_value -%}
-{# SKILLS #}
-{%- set chapterSkillsUUID = "089ea857-16ac-44df-b4e6-f0e4065f25d9" -%}
+{#- SKILLS -#}
 {%- set qSkillsUUID = "196073ed-05a0-4937-be46-0118f97cc564" -%}
 {%- set qSkillsPath = [chapterSkillsUUID, qSkillsUUID]|reply_path -%}
 {%- set skills = repliesMap[qSkillsPath]|reply_items -%}
 {%- set qSkillNameUUID = "06090290-95dc-4411-9d15-ac8d00c84503" -%}
-{# languages #}
+{#- LANGUAGES -#}
 {%- set qLanguagesUUID = "c2e4a6af-5036-4237-bdba-9ce7a1db61a1" -%}
 {%- set qLanguagesPath = [chapterSkillsUUID, qLanguagesUUID]|reply_path -%}
 {%- set languages = repliesMap[qLanguagesPath]|reply_items -%}
@@ -71,11 +73,11 @@
         {% set qLanguagePath = [qLanguagesPath, languageUUID, qLanguageUUID]|reply_path %}
         {% set languageReply = repliesMap[qLanguagePath] %}
         {% if languageReply %}
-          {% if languageReply.value.type == "IntegrationValue" %}
-            {% set languageLink = languageIntegration.itemUrl|replace("${id}", languageReply.value.id) %}
-            <li><a href="{{ languageLink }}" target="_blank">{{ languageReply.value.value }}</a></li>
+          {% if languageReply.value.value.type == "IntegrationType" %}
+            {% set languageLink = languageIntegration.itemUrl|replace("${id}", languageReply.value.value.id) %}
+            <li><a href="{{ languageLink }}" target="_blank">{{ languageReply.value.value.value }}</a></li>
           {% else %}
-            <li>{{ languageReply.value.value }}</li>
+            <li>{{ languageReply.value.value.value }}</li>
           {% endif %}
         {% endif %}
       {% endfor %}

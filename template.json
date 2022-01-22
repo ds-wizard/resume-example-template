@@ -1,11 +1,11 @@
 {
     "templateId": "resume-example-template",
     "organizationId": "dsw",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "name": "Resume example template",
     "description": "My description of my resume template",
     "license": "CC0",
-    "metamodelVersion": 2,
+    "metamodelVersion": 7,
     "recommendedPackageId": "dsw:resume:1.0.0",
     "allowedPackages": [
         {
